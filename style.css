@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 /* Reset default styles */
 *,
 *::before,
@@ -16,7 +15,7 @@ body {
   height: 100vh;
   width: 100vw;
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   background: #fafafa;
   color: #000;
   overflow-x: hidden;
@@ -82,10 +81,33 @@ header {
 }
 
 header h2 {
-  font-size: clamp(18px, 2vw, 24px);
-  font-weight: 500;
+  font-size: clamp(18px, 2vw, 20px);
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
   opacity: 0;
   animation: fadeIn 0.8s ease-out 0.6s forwards;
+
+  span {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: letterReveal 0.5s ease-out forwards;
+  }
+  
+  /* Add different animation delays for each letter */
+  span:nth-child(1) { animation-delay: 1.5s; }
+  span:nth-child(2) { animation-delay: 1.55s; }
+  span:nth-child(3) { animation-delay: 1.6s; }
+  span:nth-child(4) { animation-delay: 1.65s; }
+  span:nth-child(5) { animation-delay: 1.7s; }
+  span:nth-child(6) { animation-delay: 1.75s; }
+  span:nth-child(7) { animation-delay: 1.8s; }
+  span:nth-child(8) { animation-delay: 1.85s; }
+  span:nth-child(9) { animation-delay: 1.9s; }
+  span:nth-child(10) { animation-delay: 1.95s; }
+  span:nth-child(11) { animation-delay: 2.0s; }
 }
 
 .links {
@@ -193,6 +215,64 @@ main {
   color: #000;
   margin-left: 16vw;
   animation: titleFadeUp 1s cubic-bezier(.19, 1, .22, 1) 0.6s forwards;
+}
+
+.title h1 .brand {
+  display: inline-block;
+  position: relative;
+  animation: brandShake 1s ease-in-out infinite !important;
+  animation-delay: 2s;
+  will-change: transform;
+  transform: none !important;
+}
+
+@keyframes brandShake {
+  0% {
+    transform: translateX(0) !important;
+  }
+  25% {
+    transform: translateX(-10px) !important;
+  }
+  75% {
+    transform: translateX(10px) !important;
+  }
+  100% {
+    transform: translateX(0) !important;
+  }
+}
+
+.title h1 .brand::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shineOverlay 3s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes shineOverlay {
+  0% {
+    background-position: 200% 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-position: -200% 0;
+    opacity: 0;
+  }
 }
 
 /* Add decorative line */
@@ -387,7 +467,6 @@ h1 {
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   padding: 10vh 8vw;
-  background: linear-gradient(135deg, #000000 0%, #333333 35%, #f5f5f5 100%);
   position: relative;
   z-index: 1;
 }
@@ -399,7 +478,6 @@ h1 {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0%, rgba(255, 255, 255, 0.03) 100%);
   z-index: -1;
 }
 
@@ -508,9 +586,13 @@ h1 {
 }
 
 .function-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  align-items: center;
   gap: 32px;
+
+  > * {
+    width: 50%;
+  }
 }
 
 .function.visible {
@@ -534,7 +616,6 @@ h1 {
 
 .function-option {
   cursor: pointer;
-  border-bottom: 2px solid #eee;
   padding: 24px 0;
   transition: all 0.3s ease;
 
@@ -855,5 +936,43 @@ h1 {
   
   .footer .copy {
     font-size: 18px;
+  }
+}
+
+/* Replace shuffle animation with letterReveal animation */
+@keyframes letterReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-brand {
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(90deg, #000 0%, #333 50%, #000 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmerEffect 3s ease-in-out infinite;
+  animation-delay: 2s; /* Starts after the title reveal animation */
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: 200% 0;
+    text-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0,0,0,0.1);
+  }
+  100% {
+    background-position: -200% 0;
+    text-shadow: 0 0 0 rgba(0,0,0,0);
   }
 }
