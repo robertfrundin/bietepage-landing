@@ -176,6 +176,8 @@ main {
   justify-content: center;
   padding: 0 8vw;
   position: relative;
+  background: #000;
+  color: #fff;
 }
 
 .title h1 {
@@ -195,7 +197,7 @@ main {
 
 .title h1 .line:nth-child(1) {
   font-weight: 300;
-  color: #676052;
+  color: rgba(255,255,255,0.7);
   font-size: 0.7em;
   margin-left: 0;
   animation: titleFadeUp 1s cubic-bezier(.19, 1, .22, 1) 0.2s forwards;
@@ -203,7 +205,7 @@ main {
 
 .title h1 .line:nth-child(2) {
   font-weight: 400;
-  color: #676052;
+  color: rgba(255,255,255,0.7);
   font-size: 0.9em;
   margin-left: 8vw;
   animation: titleFadeUp 1s cubic-bezier(.19, 1, .22, 1) 0.4s forwards;
@@ -212,7 +214,7 @@ main {
 .title h1 .line:nth-child(3) {
   font-weight: 800;
   font-size: 2.2em;
-  color: #000;
+  color: #fff;
   margin-left: 16vw;
   animation: titleFadeUp 1s cubic-bezier(.19, 1, .22, 1) 0.6s forwards;
 }
@@ -220,7 +222,7 @@ main {
 .title h1 .brand {
   display: inline-block;
   position: relative;
-  animation: brandShake 1s ease-in-out infinite !important;
+  /* animation: brandShake 1s ease-in-out infinite !important; */
   animation-delay: 2s;
   will-change: transform;
   transform: none !important;
@@ -469,6 +471,7 @@ h1 {
   padding: 10vh 8vw;
   position: relative;
   z-index: 1;
+  background: #000;
 }
 
 .cards::before {
@@ -483,9 +486,9 @@ h1 {
 
 .card {
   padding: 3rem;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 2px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transform: translateY(40px);
   opacity: 0;
   animation: cardFadeUp 0.8s cubic-bezier(.19, 1, .22, 1) forwards;
@@ -499,19 +502,21 @@ h1 {
 
 .card:hover {
   transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .card h3 {
   font-size: clamp(24px, 3vw, 32px);
   font-weight: 600;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #000, #333);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #fff;
+  -webkit-background-clip: none;
+  -webkit-text-fill-color: unset;
+  background: none;
 }
 
 .card p {
-  color: #676052;
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
   font-size: clamp(16px, 1.5vw, 18px);
 }
@@ -522,11 +527,14 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  background: #000;
+  padding: 80px 5vw;
 
   h4 {
     width: fit-content;
     font-size: 30px;
     font-weight: 600;
+    color: #fff;
   }
 }
 
@@ -551,44 +559,61 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: center;
+    color: #fff;
   }
 
   p {
     font-size: 16px;
     font-weight: 500;
-    color: #444;
+    color: rgba(255,255,255,0.7);
     line-height: 1.4;
   }
 }
 
 .function {
   width: 100%;
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 64px 0;
-  background: linear-gradient(to bottom right, rgba(253, 253, 255, 0.8), rgba(255, 255, 255, 1));
+  padding: 80px 5vw;
+  background: #000;
+  color: #fff;
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  
-  h3 {
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 700;
-    text-transform: uppercase;
-    line-height: 1.1;
-    margin-bottom: 32px;
-    background: linear-gradient(45deg, #000, #333);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  position: relative;
+  overflow: hidden;
+}
+
+.function::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+  z-index: 1;
+}
+
+.function-title {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300;
+  text-transform: none;
+  line-height: 1.1;
+  margin-bottom: 48px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
 }
 
 .function-content {
   display: flex;
-  align-items: center;
-  gap: 32px;
+  align-items: flex-start;
+  gap: 64px;
+  position: relative;
+  z-index: 2;
 
   > * {
     width: 50%;
@@ -600,10 +625,32 @@ h1 {
   transform: translateY(0);
 }
 
-.function-options {
+.function-right {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 64px;
+  width: 50%;
+  height: 100%;
+  min-height: 760px;
+  padding: 32px 0;
+}
+
+.function-description {
+  font-size: 24px;
+  line-height: 1.5;
+  color: #fff;
+  font-weight: 300;
+  margin: 0;
+  transition: opacity 0.3s ease;
+  max-width: 90%;
+}
+
+.function-options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
   opacity: 0;
   transform: translateX(-20px);
   transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s;
@@ -616,72 +663,67 @@ h1 {
 
 .function-option {
   cursor: pointer;
-  padding: 24px 0;
+  padding: 16px 32px;
   transition: all 0.3s ease;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
 
-  &:hover {
-    border-bottom-color: #000;
-    transform: translateX(8px);
+  &:hover, &.active {
+    background: rgba(255,255,255,0.1);
+  }
+
+  &.active {
+    border-color: #fff;
   }
 }
 
 .function-option h4 {
-  position: relative;
   margin: 0;
-  padding-right: 40px;
-  font-size: clamp(24px, 3vw, 36px);
-  font-weight: 500;
-  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
-.function-option h4::after {
-  content: '';
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  width: 12px;
-  height: 12px;
-  border-right: 3px solid #000;
-  border-bottom: 3px solid #000;
-  transform: translateY(-50%) rotate(45deg);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.function-option.active {
-  background: rgba(0, 0, 0, 0.02);
-  border-radius: 8px;
-  padding: 24px;
-  border-bottom: none;
-  
-  h4 {
-    color: #000;
-    margin-bottom: 16px;
+@media screen and (max-width: 768px) {
+  .function {
+    padding: 64px 5vw;
   }
-  
-  h4::after {
-    transform: translateY(-50%) rotate(-135deg);
+
+  .function-content {
+    flex-direction: column;
+    gap: 48px;
   }
-}
 
-.function-option p {
-  margin: 0;
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: clamp(16px, 2vw, 24px);
-  font-weight: 400;
-  line-height: 1.6;
-  color: #444;
-}
+  .function-right {
+    width: 100%;
+    min-height: auto;
+    gap: 48px;
+    padding: 24px 0;
+  }
 
-.function-option.active p {
-  height: auto;
-  opacity: 1;
-  transform: translateY(0);
-  margin-top: 16px;
+  .function-description {
+    font-size: 20px;
+    max-width: 100%;
+  }
+
+  .function-options {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .function-option {
+    width: 100%;
+  }
+
+  .function-option h4 {
+    font-size: 16px;
+  }
 }
 
 @keyframes titleFade {
@@ -728,7 +770,7 @@ h1 {
 
 .clients {
   padding: 120px 5vw;
-  background: #fff;
+  background: #000;
   min-height: 80vh;
   display: flex;
   flex-direction: column;
@@ -740,17 +782,18 @@ h1 {
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1.1;
-  background: linear-gradient(45deg, #000, #333);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #fff;
   text-align: center;
+  -webkit-background-clip: none;
+  -webkit-text-fill-color: unset;
+  background: none;
 }
 
 .clients-description {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
-  color: #676052;
+  color: rgba(255,255,255,0.7);
   font-size: clamp(16px, 1.5vw, 18px);
   line-height: 1.6;
   margin-bottom: 48px;
