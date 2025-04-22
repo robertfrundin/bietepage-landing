@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Seymour+One&display=swap');
 /* Reset default styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 *,
 *::before,
 *::after {
@@ -15,7 +17,7 @@ body {
   height: 100vh;
   width: 100vw;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Comfortaa", sans-serif;
   background: #000;
   color: #fff;
   overflow-x: hidden;
@@ -82,7 +84,7 @@ header {
 
 header h2 {
   font-size: clamp(16px, 1.8vw, 18px);
-  font-family: "Seymour One", sans-serif;
+  font-family: "Comfortaa", sans-serif;
   font-weight: 800;
   opacity: 0;
   animation: fadeIn 0.8s ease-out 0.6s forwards;
@@ -214,7 +216,7 @@ header h2 span:nth-child(4) {
   opacity: 0;
   animation: fadeIn 0.8s ease-out forwards;
   transition: color 0.3s ease, transform 0.3s ease;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Comfortaa", sans-serif !important;
   white-space: nowrap;
 }
 
@@ -740,71 +742,72 @@ h1 {
   animation-play-state: paused;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
-  padding: 8vh 8vw;
+.circles {
   position: relative;
-  z-index: 1;
-  background: #000;
-  max-width: 1400px;
-  margin: 0 auto;
-  min-height: auto;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-items: center;
-}
-
-.cards::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-  z-index: -1;
-}
-
-.card {
-  padding: 2.5rem;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  border-radius: 50%;
-  border: 1px solid rgba(74, 144, 226, 0.3);
-  transform: translateY(40px);
-  opacity: 0;
-  animation: cardFadeUp 0.8s cubic-bezier(.19, 1, .22, 1) forwards;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  background: #000;
   overflow: hidden;
-  height: 320px;
-  width: 320px;
+  padding: 40px 0;
+  z-index: 100;
+  overflow: visible;
+}
+
+/* Circle styling */
+.circle {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: #000;
+  border: 1px solid rgba(74, 144, 226, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 
     0 0 0 1px rgba(74, 144, 226, 0.2),
     0 8px 20px rgba(74, 144, 226, 0.15),
     inset 0 0 0 1px rgba(74, 144, 226, 0.1);
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(74, 144, 226, 0.2), transparent 70%);
+  z-index: 3;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  animation: fadeIn 0.8s cubic-bezier(.19, 1, .22, 1) forwards;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  background: linear-gradient(145deg, rgba(74, 144, 226, 0.1), rgba(74, 144, 226, 0.05));
+/* Position each circle */
+.circle:nth-child(1) {
+  left: 8%;
+  top: 45%;
+  animation-delay: 0.2s;
+}
+
+.circle:nth-child(2) {
+  left: 32%;
+  top: 25%;
+  animation-delay: 0.4s;
+}
+
+.circle:nth-child(3) {
+  left: 56%;
+  top: 45%;
+  animation-delay: 0.6s;
+}
+
+.circle:nth-child(4) {
+  left: 80%;
+  top: 25%;
+  animation-delay: 0.8s;
+}
+
+/* Circle hover effect */
+.circle:hover {
+  transform: scale(1.05);
+  background: #000;
   border-color: rgba(74, 144, 226, 0.5);
   box-shadow: 
     0 0 0 1px rgba(74, 144, 226, 0.3),
@@ -812,11 +815,25 @@ h1 {
     inset 0 0 0 1px rgba(74, 144, 226, 0.2);
 }
 
-.card:hover::before {
-  opacity: 1;
+.circle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  z-index: -1;
 }
 
-.card h4 {
+.circle-content {
+  position: relative;
+  z-index: 2;
+  width: 80%;
+}
+
+.circle h4 {
   font-size: clamp(24px, 3vw, 32px);
   margin-bottom: 1rem;
   color: #fff;
@@ -824,7 +841,7 @@ h1 {
   z-index: 1;
 }
 
-.card p {
+.circle p {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
   font-size: clamp(14px, 1.2vw, 16px);
@@ -832,6 +849,107 @@ h1 {
   position: relative;
   z-index: 1;
   max-width: 80%;
+}
+
+/* PERFECTLY CONNECTED LINES WITH PRECISE ROTATIONS */
+.connection-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(74, 144, 226, 0.3), rgba(74, 144, 226, 0.7), rgba(74, 144, 226, 0.3));
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+  border-radius: 3px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+/* First connection line - connects first and second circles */
+.connection-line:nth-child(5) {
+  width: 28vw;
+  left: 18%;
+  top: 60%;
+  transform: rotate(-32deg);
+}
+
+/* Second connection line - connects second and third circles */
+.connection-line:nth-child(6) {
+  width: 28vw;
+  left: 42%;
+  top: 50%;
+  transform: rotate(32deg);
+}
+
+/* Third connection line - connects third and fourth circles */
+.connection-line:nth-child(7) {
+  width: 28vw;
+  left: 66%;
+  top: 60%;
+  transform: rotate(-32deg);
+}
+
+/* Connection line hover effect */
+.circle:hover ~ .connection-line {
+  background: linear-gradient(90deg, rgba(74, 144, 226, 0.8), rgba(74, 144, 226, 1), rgba(74, 144, 226, 0.8));
+  box-shadow: 0 0 20px rgba(74, 144, 226, 0.7);
+}
+
+/* Remove shimmer effect */
+.connection-line::after {
+  display: none;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1400px) {
+  .circles {
+    transform: scale(0.8);
+    transform-origin: center;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .circles {
+    transform: scale(0.7);
+    transform-origin: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .circles {
+    height: auto;
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    transform: none;
+  }
+
+  .circle {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 auto;
+  }
+
+  .connection-line {
+    display: none;
+  }
 }
 
 .workersContainer {
@@ -1099,7 +1217,7 @@ h1 {
   -webkit-background-clip: none;
   -webkit-text-fill-color: unset;
   background: none;
-  font-family: "Seymour One", sans-serif;
+  font-family: "Comfortaa", sans-serif;
 }
 
 .function-content {
@@ -1135,7 +1253,7 @@ h1 {
   transition: opacity 0.3s ease;
   max-width: 90%;
   margin-bottom: 2rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Comfortaa", sans-serif;
 }
 
 .function-options {
@@ -1184,7 +1302,7 @@ h1 {
   color: #fff;
   transition: color 0.3s ease;
   white-space: nowrap;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Comfortaa", sans-serif;
 }
 
 .function-option:hover h4, .function-option.active h4 {
@@ -1240,12 +1358,12 @@ h1 {
 }
 
 @media screen and (max-width: 1200px) {
-  .cards {
+  .circles {
     padding: 6vh 5vw;
     gap: 2rem;
   }
   
-  .card {
+  .circle {
     padding: 2.5rem;
   }
   
@@ -1255,13 +1373,13 @@ h1 {
     margin-bottom: 1.5rem !important;
   }
   
-  .card p {
+  .circle p {
     margin-top: 1.5rem;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .cards {
+  .circles {
     grid-template-columns: repeat(1, 1fr);
     padding: 12px 5vw;
     gap: 12px;
@@ -1269,18 +1387,18 @@ h1 {
     justify-items: center;
   }
   
-  .card {
+  .circle {
     height: 130px;
     width: 130px;
     padding: 12px;
   }
   
-  .card h4 {
+  .circle h4 {
     font-size: 14px;
     margin-bottom: 6px;
   }
   
-  .card p {
+  .circle p {
     font-size: 10px;
     max-width: 90%;
     line-height: 1.2;
@@ -1288,23 +1406,23 @@ h1 {
 }
 
 @media screen and (max-width: 480px) {
-  .cards {
+  .circles {
     padding: 10px 5vw;
     gap: 10px;
   }
   
-  .card {
+  .circle {
     height: 120px;
     width: 120px;
     padding: 10px;
   }
   
-  .card h4 {
+  .circle h4 {
     font-size: 13px;
     margin-bottom: 4px;
   }
   
-  .card p {
+  .circle p {
     font-size: 9px;
     max-width: 95%;
     line-height: 1.2;
@@ -1321,22 +1439,22 @@ h1 {
 }
 
 @media screen and (max-width: 360px) {
-  .cards {
+  .circles {
     gap: 8px;
   }
   
-  .card {
+  .circle {
     height: 110px;
     width: 110px;
     padding: 8px;
   }
   
-  .card h4 {
+  .circle h4 {
     font-size: 12px;
     margin-bottom: 3px;
   }
   
-  .card p {
+  .circle p {
     font-size: 8px;
     line-height: 1.1;
   }
@@ -1718,7 +1836,7 @@ dotlottie-player {
 
 /* Standardize title sizes */
 .function-title, 
-.card h4, 
+.circle h4, 
 .workersContainer h4, 
 .clients h3 {
   font-size: clamp(28px, 3.5vw, 42px);
@@ -1746,31 +1864,28 @@ dotlottie-player {
 }
 
 /* Improve spacing in consulting and design blocks */
-.card {
-  padding: 2.5rem;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+.circle {
+  width: 340px;
+  height: 340px;
+  padding: 40px;
   border-radius: 50%;
   border: 1px solid rgba(74, 144, 226, 0.3);
-  transform: translateY(40px);
-  opacity: 0;
-  animation: cardFadeUp 0.8s cubic-bezier(.19, 1, .22, 1) forwards;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  height: 320px;
-  width: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  animation: cardFadeUp 0.8s cubic-bezier(.19, 1, .22, 1) forwards;
   box-shadow: 
     0 0 0 1px rgba(74, 144, 226, 0.2),
     0 8px 20px rgba(74, 144, 226, 0.15),
     inset 0 0 0 1px rgba(74, 144, 226, 0.1);
+  z-index: 3;
 }
 
-.card h4 {
+.circle h4 {
   font-size: clamp(24px, 3vw, 32px);
   margin-bottom: 1rem;
   color: #fff;
@@ -1778,7 +1893,7 @@ dotlottie-player {
   z-index: 1;
 }
 
-.card p {
+.circle p {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
   font-size: clamp(14px, 1.2vw, 16px);
@@ -1813,18 +1928,8 @@ dotlottie-player {
 
 /* Mobile adjustments */
 @media screen and (max-width: 768px) {
-  
-
-  .card p {
+  .circle p {
     margin-bottom: 2rem;
-  }
-  
-  .function-description {
-    margin-bottom: 1.5rem;
-  }
-  
-  .function-options {
-    margin-top: 0.5rem;
   }
 }
 
@@ -1836,12 +1941,16 @@ header h2,
 .clients h3,
 .worker h5,
 .links a {
-  font-family: "Seymour One", sans-serif;
+  font-family: "Comfortaa", sans-serif;
+}
+
+.brand {
+  font-family: "Seymour One", sans-serif !important;
 }
 
 /* Remove Seymour One from other elements */
 .function-option h4 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Comfortaa", sans-serif;
 }
 
 /* Add specific media query for 1000-768px screens */
@@ -1891,7 +2000,7 @@ header h2,
     margin-bottom: 2rem !important;
   }
   
-  .card p {
+  .circle p {
     margin-top: 2rem;
     margin-bottom: 1.5rem;
   }
@@ -1916,7 +2025,7 @@ header h2,
     margin-bottom: 1.8rem !important;
   }
   
-  .card p {
+  .circle p {
     margin-top: 1.8rem;
     margin-bottom: 1.2rem;
   }
