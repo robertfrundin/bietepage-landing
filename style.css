@@ -1,7 +1,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Seymour+One&display=swap');
-/* Reset default styles */
-
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+/* Cursor following circle */
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(74, 144, 226, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.2s ease;
+  mix-blend-mode: difference;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.cursor::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(74, 144, 226, 0.1);
+  animation: pulse 2s infinite;
+  will-change: transform;
+}
+
+.cursor-follower {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.4s ease, width 0.3s ease, height 0.3s ease;
+  mix-blend-mode: difference;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Ensure cursor is visible on all elements */
+* {
+  cursor: default !important;
+}
+
+/* Reset cursor for interactive elements */
+a, button, .function-option, input, select, textarea {
+  cursor: pointer !important;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Reset default styles */
 *,
 *::before,
 *::after {
@@ -284,16 +353,16 @@ main {
 }
 
 .title h1 {
-  font-size: clamp(32px, 6vw, 80px);
-  line-height: 1.1;
+  font-size: clamp(40px, 10vw, 140px);
+  text-transform: lowercase;
+  line-height: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.4em;
   width: 100%;
   max-width: 100%;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  white-space: nowrap;
   hyphens: auto;
 }
 
@@ -322,15 +391,16 @@ main {
 
 .title h1 .line:nth-child(3) {
   font-weight: 800;
-  font-size: 2.2em;
+  font-size: 1.5em;
 
-  margin-left: 16vw;
+  margin-left: 14vw;
   animation: titleFadeUp 1s cubic-bezier(.19, 1, .22, 1) 0.6s forwards;
 }
 
 .title h1 .brand {
   display: inline-flex;
   position: relative;
+  text-transform: uppercase;
   will-change: transform;
   animation: titleFadeUp 1s cubic-bezier(.19, 1, .22, 1) 0.6s forwards;
 }
@@ -686,7 +756,6 @@ h1 {
 
   .yours {
     color: rgb(112, 112, 112);
-    text-transform: uppercase;
     font-weight: 500;
   }
 
@@ -2101,5 +2170,11 @@ header h2,
   
   .worker p {
     font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .title h1 .brand {
+    margin-left: 4vw !important;
   }
 }
