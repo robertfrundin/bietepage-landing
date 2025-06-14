@@ -8,6 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
     <title>Document</title>
   </head>
   <body>
@@ -16,11 +17,16 @@
         <span>B</span><span>E</span><span>I</span><span>M</span><span>A</span
         ><span>G</span><span>E</span><span>N</span><span>C</span><span>Y</span>
       </h2>
+      <div class="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <div class="links">
-        <a href="#">О компании</a>
-        <a href="#">Дизайн</a>
-        <a href="#">Консалтинг</a>
-        <a href="#">Контакты</a>
+        <a href="#workersContainer">О компании</a>
+        <a href="#design-studio">Дизайн</a>
+        <a href="#consulting">Консалтинг</a>
+        <a href="#footer">Контакты</a>
       </div>
     </header>
     <main>
@@ -51,7 +57,7 @@
         </h1>
       </div>
 
-      <div class="workersContainer">
+      <div class="workersContainer" id="workersContainer">
         <h4> <div>О компании</div> <br>
           <span >Мы не просто создаем бренды — мы делаем их сильными, устойчивыми и защищенными.
              Ваш успех начинается здесь.
@@ -63,58 +69,62 @@
           <div class="worker">
             <div class="worker-inner">
               <div class="worker-front">
-                <img src="public/c-5.jpg" alt="" />
+                <div class="worker-image-wrapper">
+                  <img src="public/workers/c-5.jpg" alt="" />
+                </div>
                 <h5>Битепейдж Екатерина</h5>
               </div>
               <div class="worker-back">
                 <p>Руководитель проекта</p>
-                <h5>Битепейдж Екатерина</h5>
               </div>
             </div>
           </div>
           <div class="worker">
             <div class="worker-inner">
               <div class="worker-front">
-                <img src="public/c-5.jpg" alt="" />
-                <h5>Битепейдж Екатерина</h5>
+                <div class="worker-image-wrapper">
+                  <img src="public/workers/olga.jpg" alt="" />
+                </div>
+                <h5>Ольга Марюхина</h5>
               </div>
               <div class="worker-back">
-                <p>Руководитель проекта</p>
-                <h5>Битепейдж Екатерина</h5>
+                <p>Патентный поверенный №1998</p>
               </div>
             </div>
           </div>
           <div class="worker">
             <div class="worker-inner">
               <div class="worker-front">
-                <img src="public/c-5.jpg" alt="" />
-                <h5>Битепейдж Екатерина</h5>
+                <div class="worker-image-wrapper">
+                  <img src="public/workers/lana-2.jpg" alt="" />
+                </div>
+                <h5>Лана Болотина</h5>
               </div>
               <div class="worker-back">
-                <p>Руководитель проекта</p>
-                <h5>Битепейдж Екатерина</h5>
+                <p>Дизайнер</p>
               </div>
             </div>
           </div>
           <div class="worker">
             <div class="worker-inner">
               <div class="worker-front">
-                <img src="public/c-5.jpg" alt="" />
-                <h5>Битепейдж Екатерина</h5>
+                <div class="worker-image-wrapper">
+                  <img src="public/workers/olga-2.jpg" alt="" />
+                </div>
+                <h5>Ольга Романова</h5>
               </div>
               <div class="worker-back">
-                <p>Руководитель проекта</p>
-                <h5>Битепейдж Екатерина</h5>
+                <p>Фотограф</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="function">
+      <div class="function" id="design-studio">
         <div class="function-content">
           <div class="function-visual">
-            <h3 class="function-title">Дизайн-студия</h3>
+            <h3 class="function-title">дизайн-студия</h3>
             <dotlottie-player
               src="https://lottie.host/9e61b9f0-fb99-42cb-88ec-6e8ad0d0e913/HBWYSc9SE4.lottie"
               background="transparent"
@@ -127,19 +137,25 @@
           <div class="function-right">
             <div class="function-options">
               <div class="function-option">
-                <h4>Нейминг</h4>
+                <h4>нейминг</h4>
               </div>
               <div class="function-option">
-                <h4>Брендинг</h4>
+                <h4>брендинг</h4>
               </div>
               <div class="function-option">
-                <h4>Консалтинг</h4>
+                <h4>брендбук/фирменный стиль</h4>
               </div>
               <div class="function-option">
-                <h4>Веб-дизайн/программная разработка</h4>
+                <h4>дизайн упаковки</h4>
               </div>
               <div class="function-option">
-                <h4>Маркетинг и продвижение</h4>
+                <h4>веб-дизайн/разработка</h4>
+              </div>
+              <div class="function-option">
+                <h4>профессиональная фотосъемка</h4>
+              </div>
+              <div class="function-option">
+                <h4>дизайн интерьера</h4>
               </div>
             </div>
           </div>
@@ -154,51 +170,70 @@
         </p>
         <div class="clients-caroures">
           <div class="carousel-inner">
-            <div class="item">
-              <img src="public/partners/krasni_okt.svg" alt="Client Logo" />
+            <div class="item krasni-okt-image-wrapper">
+              <img src="public/partners/krasni_okt.png" alt="Client Logo" />
             </div>
             <div class="item">
               <img src="public/partners/t2.svg" alt="Client Logo" />
             </div>
-            <div class="item">
+            <div class="item rich-time-image-wrapper">
+              <img src="public/partners/r1.jpg" alt="Client Logo" />
+            </div>
+            <div class="item silver-planet-image-wrapper">
               <img src="public/partners/silver_planet.svg" alt="Client Logo" />
             </div>
             <div class="item">
-              <img src="public/partners/loranzo.svg" alt="Client Logo" />
+              <div class="item loranzo-image-wrapper">
+                <img src="public/partners/loranzo.svg" alt="Client Logo" />
+              </div>
             </div>
             <div class="item">
               <img src="public/partners/barviha.svg" alt="Client Logo" />
             </div>
-            <div class="item">
+            <div class="item russkiy-image-wrapper">
               <img src="public/partners/russkiy.svg" alt="Client Logo" />
             </div>
+            <div class="item lima-image-wrapper">
+              <img src="public/partners/lima.jpg" alt="Client Logo" />
+            </div>
+           
             <!-- Duplicate set -->
-            <div class="item">
-              <img src="public/partners/krasni_okt.svg" alt="Client Logo" />
+            <div class="item krasni-okt-image-wrapper">
+              <img src="public/partners/krasni_okt.png" alt="Client Logo" />
             </div>
             <div class="item">
               <img src="public/partners/t2.svg" alt="Client Logo" />
             </div>
-            <div class="item">
+            <div class="item rich-time-image-wrapper" >
+              <img src="public/partners/r1.jpg"  alt="Client Logo" />
+            </div>
+            <div class="item silver-planet-image-wrapper">
               <img src="public/partners/silver_planet.svg" alt="Client Logo" />
             </div>
-            <div class="item">
+            <div class="item loranzo-image-wrapper">
               <img src="public/partners/loranzo.svg" alt="Client Logo" />
             </div>
             <div class="item">
               <img src="public/partners/barviha.svg" alt="Client Logo" />
             </div>
-            <div class="item">
+            <div class="item russkiy-image-wrapper">
               <img src="public/partners/russkiy.svg" alt="Client Logo" />
             </div>
+            <div class="item">
+              <img src="public/partners/bakaura.svg" alt="Client Logo" />
+            </div>
+            <div class="item lima-image-wrapper">
+              <img src="public/partners/lima.jpg" alt="Client Logo" />
+            </div>
+           
           </div>
         </div>
       </div>
 
-      <div class="function">
+      <div class="function" id="consulting">
         <div class="function-content">
           <div class="function-visual">
-            <h3 class="function-title">Консалтинг</h3>
+            <h3 class="function-title">консалтинг</h3>
             <dotlottie-player
               src="https://lottie.host/cf1dd90a-4d2f-40b1-b974-92aaadb54649/XIoqNwlxGH.lottie"
               background="transparent"
@@ -211,19 +246,19 @@
           <div class="function-right">
             <div class="function-options">
               <div class="function-option">
-                <h4>Товарный знак</h4>
+                <h4>товарный знак</h4>
               </div>
               <div class="function-option">
-                <h4>Промышленный дизайн</h4>
+                <h4>промышленный дизайн</h4>
               </div>
               <div class="function-option">
-                <h4>Договоры о распоряжении</h4>
+                <h4>договоры о распоряжении</h4>
               </div>
               <div class="function-option">
-                <h4>Патенты</h4>
+                <h4>патенты</h4>
               </div>
               <div class="function-option">
-                <h4>Споры</h4>
+                <h4>споры</h4>
               </div>
             </div>
           </div>
@@ -250,46 +285,25 @@
         </div>
       </div> -->
     </main>
-    <footer class="footer">
-      <div class="top">
-        <div class="head-holder" id="footer-anchor">
-          <div class="contacts-list">
-            <a href="mailto:main@bietepage.ru" class="link"
-              >main@bietepage.ru</a
-            >
-            <div class="social-links">
-              <a href="https://t.me/yourusername" class="link">
-                <img
-                  src="public/icons8-telegram.svg"
-                  alt="Telegram"
-                  width="20"
-                  height="20"
-                />
-                <span>Telegram</span>
-              </a>
-              <a href="https://wa.me/79067429558" class="link">
-                <img
-                  src="public/icons8-whatsapp.svg"
-                  alt="WhatsApp"
-                  width="20"
-                  height="20"
-                />
-                <span>WhatsApp</span>
-              </a>
-            </div>
-            <a href="tel:+79067429558" class="link">+7(906)742-95-58</a>
+    <footer class="footer" id="footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo">
+            <span>BE</span><br />
+            <span>IM</span>
+          </div>
+        </div>
+        <div class="footer-right">
+          <div class="footer-links">
+            <a href="https://t.me/yourusername" class="footer-link" target="_blank">TELEGRAM</a><br />
+            <a href="https://wa.me/79067429558" class="footer-link" target="_blank">WHATSAPP</a>
+          </div>
+          <div class="footer-contacts">
+            <a href="tel:+79067429558" class="footer-link">8(906)742-95-58</a><br />
+            <a href="mailto:main@bietepage.ru" class="footer-link">MAIN@BIETEPAGE.RU</a>
           </div>
         </div>
       </div>
-      <div class="bottom container">
-        <a href="#" class="scroll-top">
-          <span>Вверх</span>
-        </a>
-        <div class="copy">
-          <p>© 2024 BIETEPAGE & MARYUKHINA. Все права защищены</p>
-        </div>
-      </div>
     </footer>
-    <script src="script.js"></script>
   </body>
 </html>
