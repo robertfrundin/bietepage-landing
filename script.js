@@ -15,28 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
   functionSections.forEach(section => {
     observer.observe(section);
     
-    // Set up button click handlers for each section
-    const buttons = section.querySelectorAll('.function-option');
-    const description = section.querySelector('.function-description');
+    // Set up expand/collapse handlers for each section
+    const options = section.querySelectorAll('.function-option');
     
-    // Set first button as active by default
-    if (buttons.length > 0) {
-      buttons[0].classList.add('active');
-    }
-    
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons in this section
-        buttons.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        button.classList.add('active');
+    options.forEach(option => {
+      const header = option.querySelector('.option-header');
+      
+      header.addEventListener('click', () => {
+        // Close all other options in this section
+        options.forEach(otherOption => {
+          if (otherOption !== option) {
+            otherOption.classList.remove('expanded');
+          }
+        });
         
-        // Update description with fade effect
-        description.style.opacity = '0';
-        setTimeout(() => {
-          description.textContent = button.dataset.description;
-          description.style.opacity = '1';
-        }, 300);
+        // Toggle current option
+        option.classList.toggle('expanded');
       });
     });
   });
